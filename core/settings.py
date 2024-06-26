@@ -29,9 +29,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-2m)pcaq*t(0vqv7@&s50@9e_a)*0e00dj3808)$w3%w@73!tq#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['http://192.168.0.100/', 'http://127.0.0.1/', '192.168.0.100', '127.0.0.1']
+ALLOWED_HOSTS = [
+    'http://peykamcomputer.pythonanywhere.com', 
+    'https://peykamcomputer.pythonanywhere.com',
+    'http://www.peykamcomputer.pythonanywhere.com',
+    'https://www.peykamcomputer.pythonanywhere.com',
+    'www.peykamcomputer.pythonanywhere.com',
+    'peykamcomputer.pythonanywhere.com', 
+    '127.0.0.1'
+]
 
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
