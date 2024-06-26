@@ -1,0 +1,78 @@
+{% extends 'turkmen/base.html' %}
+{% load static %}
+{% load custom_filters %}
+{% block content %}
+
+    <!-- Page Title -->
+    <div class="page-title">
+      <div class="heading">
+      </div>
+      <nav class="breadcrumbs">
+        <div class="container">
+          <ol>
+            <li><a href="{% url 'index' %}">Baş sahypa</a></li>
+            <li><a href="{% url 'it_services' %}">IT hyzmatlar</a></li>
+            <li class="current">{{it_service.title}}</li>
+            
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <!-- Service Details Section -->
+    <section id="service-details" class="service-details section">
+
+      <div class="container">
+
+        <div class="row gy-5">
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="service-box">
+              <h4>IT hyzmatlar</h4>
+              <div class="services-list">
+                {% for s in it_services %}
+                  {% if s.id == it_service.id %}
+                    <a href="{% url 'it_service' s.id %}" class="active"><i class="bi bi-{{s.icon}}"></i><span>{{s.title}}</span></a>
+                  {% else %}
+                    <a href="{% url 'it_service' s.id %}"><i class="bi bi-{{s.icon}}"></i><span>{{s.title}}</span></a>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div><!-- End Services List -->
+
+            <div class="help-box d-flex flex-column justify-content-center align-items-center">
+              <i class="bi bi-headset help-icon"></i>
+              <h4>Ýüz tutmak üçin</h4>
+              <p class="d-flex align-items-center mt-2 mb-0"><i class="bi bi-telephone me-2"></i> <span><a href="tel:{{phone_1}}">{{phone_1}}</a></span></p>
+              <p class="d-flex align-items-center mt-1 mb-0"><i class="bi bi-envelope me-2"></i> <a href="mailto:{{email_1}}">{{email_1}}</a></p>
+            </div>
+
+          </div>
+
+          <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
+            {% if it_service.image %}
+              <center><img src="{{it_service.image.url}}" width="720px;" class="img-fluid services-img"></center>
+            
+            
+            {% endif %}
+            <h3>{{it_service.title}}</h3>
+            <p>
+              {{it_service.short_description}}
+            </p>
+            <ul>
+              {% for sentence in it_service.full_description|split %}
+                {% if sentence %}
+                  <li><i class="bi bi-check-circle"></i> <span>{{sentence}}</span></li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Service Details Section -->
+
+    {% endblock %}

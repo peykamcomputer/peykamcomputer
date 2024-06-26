@@ -1,0 +1,231 @@
+{% extends 'turkmen/base.html' %}
+{% load static %}
+{% load custom_filters %}
+{% block content %}
+   
+   <!-- Hero Section -->
+    <section id="hero" class="hero section">
+
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+            <h1 data-aos="fade-up">{{hero_section.title}}</h1>
+            <p data-aos="fade-up" data-aos-delay="100">{{hero_section.description}}</p>
+            <div class="d-flex flex-column flex-md-row" data-aos="fade-up" data-aos-delay="200">
+              <a href="#about" class="btn-get-started">Doly gör <i class="bi bi-chevron-down"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out">
+            <img src="{{hero_section.image.url}}" class="img-fluid animated" alt="">
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <div class="container" data-aos="fade-up">
+        <div class="row gx-0">
+
+          <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="content">
+              <h3>Biz kim?</h3>
+              <h2>{{aboutus.title}}</h2>
+              <p>
+                <table>
+                  <ul>{{aboutus.text|linebreaksbr}}</ul>
+                </table>
+              </p>
+
+            </div>
+          </div>
+
+          <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+            <div class="about-slider swiper init-swiper">
+
+              <script type="application/json" class="swiper-config">
+                {
+                  "loop": true,
+                  "speed": 600,
+                  "autoplay": {
+                    "delay": 5000
+                  },
+                  "slidesPerView": "auto",
+                  "pagination": {
+                    "el": ".swiper-pagination",
+                    "type": "bullets",
+                    "clickable": true
+                  }
+                }
+              </script>
+  
+              <div class="swiper-wrapper align-items-center">
+
+                {% for slider in sliders %}
+                <div class="swiper-slide">
+                  <img src="{{slider.image.url}}" alt="">
+                </div>
+                {% endfor %}
+  
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+            
+          </div>
+
+
+
+        </div>
+      </div>
+
+    </section><!-- /About Section -->
+
+   
+<!-- Services Section -->
+<section id="services" class="services section">
+  <br><br><br>
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Biziň size hödürleýän hyzmatlarymyz</h2>
+  </div><!-- End Section Title -->
+
+  <div class="container">
+
+    <div class="row gy-4">
+      {% for service in services %}
+      <style>
+          .services .service-item.item-{{service.color}} {
+            border-bottom: 3px solid {{service.color}};
+          }
+
+          .services .service-item.item-{{service.color}} .icon {
+            color: {{service.color}};
+            background: rgba{{service.color|to_rgb}};;
+          }
+
+          .services .service-item.item-{{service.color}} .read-more {
+            color: {{service.color}};
+          }
+
+          .services .service-item.item-{{service.color}}:hover {
+            background: {{service.color}};
+          }
+
+          .services .service-item:hover h3,
+          .services .service-item:hover p,
+          .services .service-item:hover .read-more {
+            color: #fff;
+          }
+
+          .services .service-item:hover .icon {
+            background: #fff;
+          }
+
+      </style>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="service-item item-{{service.color}} position-relative">
+          <i class="bi bi-{{service.icon}} icon"></i>
+          <h3>{{service.title}}</h3>
+          <p>{{service.short_description}}</p>
+          <a href="{% url 'service' service.id %}" class="read-more stretched-link"><span>Doly oka</span> <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div><!-- End Service Item -->
+      {% endfor %}
+
+    </div>
+
+  </div>
+
+</section><!-- /Services Section -->
+   
+    <!-- Stats Section -->
+    <section id="stats" class="stats section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item d-flex align-items-center w-100 h-100">
+              <i class="bi bi-emoji-smile color-blue flex-shrink-0"></i>
+              <div>
+                <span>{{stats.happy_clients}}</span>
+                <p>Bagtly müşderiler</p>
+              </div>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item d-flex align-items-center w-100 h-100">
+              <i class="bi bi-journal-richtext color-orange flex-shrink-0" style="color: #ee6c20;"></i>
+              <div>
+                <span>{{stats.translations}}</span>
+                <p>Terjimeler</p>
+              </div>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item d-flex align-items-center w-100 h-100">
+              <i class="bi bi-headset color-green flex-shrink-0" style="color: #15be56;"></i>
+              <div>
+                <span>{{stats.support}}</span>
+                <p>Goldaw</p>
+              </div>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item d-flex align-items-center w-100 h-100">
+              <i class="bi bi-people color-pink flex-shrink-0" style="color: #bb0852;"></i>
+              <div>
+                <span>{{stats.team}}</span>
+                <p>Işeňňir hünärmenler</p>
+              </div>
+            </div>
+          </div><!-- End Stats Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Stats Section -->
+
+    <!-- Faq Section -->
+    <section id="faq" class="faq section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Köplenç berilýän soraglar</h2>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row justify-content-center">
+          
+          <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="faq-container">
+              {% for faq in faqs %}
+                <div class="faq-item faq">
+                  <h3>{{faq.question}}</h3>
+                    <div class="faq-content">
+                        <p>{{faq.answer}}</p>
+                    </div>
+                    <i class="faq-toggle bi bi-chevron-right"></i>
+                </div><!-- End Faq item-->
+              {% endfor %}
+
+            </div>
+
+          </div><!-- End Faq Column-->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Faq Section -->
+   
+  {% endblock %}

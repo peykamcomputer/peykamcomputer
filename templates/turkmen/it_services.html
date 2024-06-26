@@ -1,0 +1,61 @@
+{% extends 'turkmen/base.html' %}
+{% load static %}
+{% block content %}
+<!-- Services Section -->
+<section id="services" class="services section">
+  <br><br><br>
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Şahsy telekeçilik işleriňize döwrebap IT sanly çözgütleri</h2>
+  </div><!-- End Section Title -->
+
+  <div class="container">
+
+    <div class="row gy-4">
+      {% for it_service in it_services %}
+      <style>
+          .services .service-item.item-{{it_service.color}} {
+            border-bottom: 3px solid {{it_service.color}};
+          }
+
+          .services .service-item.item-{{it_service.color}} .icon {
+            color: {{it_service.color}};
+            background: rgba{{it_service.color|to_rgb}};;
+          }
+
+          .services .service-item.item-{{it_service.color}} .read-more {
+            color: {{it_service.color}};
+          }
+
+          .services .service-item.item-{{it_service.color}}:hover {
+            background: {{it_service.color}};
+          }
+
+          .services .service-item:hover h3,
+          .services .service-item:hover p,
+          .services .service-item:hover .read-more {
+            color: #fff;
+          }
+
+          .services .service-item:hover .icon {
+            background: #fff;
+          }
+
+      </style>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="service-item item-{{it_service.color}} position-relative">
+          <i class="bi bi-{{it_service.icon}} icon"></i>
+          <h3>{{it_service.title}}</h3>
+          <p>{{it_service.short_description}}</p>
+          <a href="{% url 'it_service' it_service.id %}" class="read-more stretched-link"><span>Doly oka</span> <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div><!-- End Service Item -->
+      {% endfor %}
+
+    </div>
+
+  </div>
+
+</section><!-- /Services Section -->
+  
+  {% endblock %}

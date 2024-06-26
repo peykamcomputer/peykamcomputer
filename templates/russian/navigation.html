@@ -1,0 +1,68 @@
+{% load static %}
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+      <a href="{% url 'index_russian' %}" class="logo d-flex align-items-center me-auto">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img src="{% static 'assets/img/logo.png' %}" alt="">
+        <h1 class="sitename">{{logo_name}}</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          {% if page == 'home' %}
+          <li><a href="{% url 'index_russian' %}" class="active">Главная страница<br></a></li>
+          <li><a href="{% url 'services_russian' %}">Услуги</a></li>
+          <li><a href="{% url 'it_services_russian' %}">IT Услуги</a></li>
+          <li><a href="{% url 'products_russian' %}">Товары</a></li>
+          <li><a href="{% url 'contact_russian' %}">Обратная связь</a></li>
+          <li><a href="tel:{{phone_1}}">{{phone_1}}</a></li>
+          {% endif %}
+          {% if page == 'services' %}
+          <li><a href="{% url 'index_russian' %}">Главная страница<br></a></li>
+          <li><a href="{% url 'services_russian' %}" class="active">Услуги</a></li>
+          <li><a href="{% url 'it_services_russian' %}">IT Услуги</a></li>
+          <li><a href="{% url 'products_russian' %}">Товары</a></li>
+          <li><a href="{% url 'contact_russian' %}">Обратная связь</a></li>
+          <li><a href="tel:{{phone_1}}">{{phone_1}}</a></li>
+          {% endif %}
+          {% if page == 'it_services' %}
+          <li><a href="{% url 'index_russian' %}">Главная страница<br></a></li>
+          <li><a href="{% url 'services_russian' %}">Услуги</a></li>
+          <li><a href="{% url 'it_services_russian' %}" class="active">IT Услуги</a></li>
+          <li><a href="{% url 'products_russian' %}">Товары</a></li>
+          <li><a href="{% url 'contact_russian' %}">Обратная связь</a></li>
+          <li><a href="tel:{{phone_1}}">{{phone_1}}</a></li>
+          {% endif %}
+          {% if page == 'products' %}
+          <li><a href="{% url 'index_russian' %}">Главная страница<br></a></li>
+          <li><a href="{% url 'services_russian' %}">Услуги</a></li>
+          <li><a href="{% url 'it_services_russian' %}">IT Услуги</a></li>
+          <li><a href="{% url 'products_russian' %}" class="active">Товары</a></li>
+          <li><a href="{% url 'contact_russian' %}">Обратная связь</a></li>
+          <li><a href="tel:{{phone_1}}">{{phone_1}}</a></li>
+          {% endif %}
+          {% if page == 'contact' %}
+          <li><a href="{% url 'index_russian' %}">Главная страница<br></a></li>
+          <li><a href="{% url 'services_russian' %}">Услуги</a></li>
+          <li><a href="{% url 'it_services_russian' %}">IT Услуги</a></li>
+          <li><a href="{% url 'products_russian' %}">Товары</a></li>
+          <li><a href="{% url 'contact_russian' %}" class="active">Обратная связь</a></li>
+          <li><a href="tel:{{phone_1}}">{{phone_1}}</a></li>
+          {% endif %}
+          {% if language == 'turkmen' %}
+          <li><a href="/tm" class="active">TM</a></li>
+          <li><a href="/ru">RU</a>
+          {% endif %}
+          {% if language == 'russian' %}
+          <li><a href="/tm">TM</a></li>
+          <li><a href="/ru" class="active">RU</a>
+          {% endif %}
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+
+    </div>
+  </header>
