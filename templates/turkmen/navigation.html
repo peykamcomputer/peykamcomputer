@@ -1,70 +1,75 @@
 {% load static %}
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-      <a href="{% url 'index' %}" class="logo d-flex align-items-center me-auto">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="{% static 'assets/img/logo.png' %}" alt="">
-        <h1 class="sitename">{{logo_name}}</h1>
-      </a>
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          {% if page == 'home' %}
-          <li><a href="{% url 'index' %}" class="active">Baş sahypa<br></a></li>
-          <li><a href="{% url 'services' %}">Hyzmatlar</a></li>
-          <li><a href="{% url 'it_services' %}">IT Hyzmatlar</a></li>
-          <li><a href="{% url 'products' %}">Harytlar</a></li>
-          <li><a href="{% url 'contact' %}">Habarlaşmak üçin</a></li>
-          <li><a href="tel:{{phone_1}}">{{phone_1}}</a></li>
-          
-          {% endif %}
-          {% if page == 'services' %}
-          <li><a href="{% url 'index' %}">Baş sahypa<br></a></li>
-          <li><a href="{% url 'services' %}" class="active">Hyzmatlar</a></li>
-          <li><a href="{% url 'it_services' %}">IT Hyzmatlar</a></li>
-          <li><a href="{% url 'products' %}">Harytlar</a></li>
-          <li><a href="{% url 'contact' %}">Habarlaşmak üçin</a></li>
-          <li><a href="tel:{{phone_1}}">{{phone_1}}</a></li>
-          {% endif %}
-          {% if page == 'it_services' %}
-          <li><a href="{% url 'index' %}">Baş sahypa<br></a></li>
-          <li><a href="{% url 'services' %}">Hyzmatlar</a></li>
-          <li><a href="{% url 'it_services' %}" class="active">IT Hyzmatlar</a></li>
-          <li><a href="{% url 'products' %}">Harytlar</a></li>
-          <li><a href="{% url 'contact' %}">Habarlaşmak üçin</a></li>
-          <li><a href="tel:{{phone_1}}">{{phone_1}}</a></li>
-          {% endif %}
-          {% if page == 'products' %}
-          <li><a href="{% url 'index' %}">Baş sahypa<br></a></li>
-          <li><a href="{% url 'services' %}">Hyzmatlar</a></li>
-          <li><a href="{% url 'it_services' %}">IT Hyzmatlar</a></li>
-          <li><a href="{% url 'products' %}" class="active">Harytlar</a></li>
-          <li><a href="{% url 'contact' %}">Habarlaşmak üçin</a></li>
-          <li><a href="tel:{{phone_1}}">{{phone_1}}</a></li>
-          {% endif %}
-          {% if page == 'contact' %}
-          <li><a href="{% url 'index' %}">Baş sahypa<br></a></li>
-          <li><a href="{% url 'services' %}">Hyzmatlar</a></li>
-          <li><a href="{% url 'it_services' %}">IT Hyzmatlar</a></li>
-          <li><a href="{% url 'products' %}">Harytlar</a></li>
-          <li><a href="{% url 'contact' %}" class="active">Habarlaşmak üçin</a></li>
-          <li><a href="tel:{{phone_1}}">{{phone_1}}</a></li>
-          {% endif %}
-          {% if language == 'turkmen' %}
-          <li><a href="/tm" class="active">TM</a></li>
-          <li><a href="/ru">RU</a>
-          {% endif %}
-          {% if language == 'russian' %}
-          <li><a href="/tm">TM</a></li>
-          <li><a href="/ru" class="active">RU</a>
-          {% endif %}
-          
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
+  <header id="header" class="header fixed-top">
 
+    <div class="topbar d-flex align-items-center">
+      <div class="container d-flex justify-content-center align-items-center">
+        <div class="contact-info d-flex align-items-center">
+          <i class="bi bi-phone d-flex align-items-center"><a href="tel:{{phone_1}}">{{phone_1}}</a></i>
+          <i class="bi bi-envelope d-flex align-items-center ms-3"><a href="mailto:{{email_1}}">{{email_1}}</a></i>
+          <i class="d-flex align-items-center ms-3"><a href="/tm"><img src="{% static 'assets/img/tm.png' %}" alt=""></a></i>
+          <i class="d-flex align-items-center ms-0"><a href="/ru"><img src="{% static 'assets/img/ru.png' %}" alt=""></a></i>
+        </div>
+        </div>
+      </div>
+    </div><!-- End Top Bar -->
+
+    <div class="branding d-flex align-items-cente">
+
+      <div class="container position-relative d-flex align-items-center justify-content-between">
+
+        <a href="{% url 'index' %}" class="logo d-flex align-items-center me-auto">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <img src="{% static 'assets/img/logo.png' %}" alt="">
+          <h1 class="sitename">{{logo_name}}</h1>
+  
+        </a>
+  
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            {% if page == 'home' %}
+            <li><a href="{% url 'index' %}" class="active">Baş sahypa<br></a></li>
+            <li><a href="{% url 'services' %}">Hyzmatlar</a></li>
+            <li><a href="{% url 'it_services' %}">IT Hyzmatlar</a></li>
+            <li><a href="{% url 'products' %}">Harytlar</a></li>
+            <li><a href="{% url 'contact' %}">Habarlaşmak üçin</a></li>            
+            {% endif %}
+            {% if page == 'services' %}
+            <li><a href="{% url 'index' %}">Baş sahypa<br></a></li>
+            <li><a href="{% url 'services' %}" class="active">Hyzmatlar</a></li>
+            <li><a href="{% url 'it_services' %}">IT Hyzmatlar</a></li>
+            <li><a href="{% url 'products' %}">Harytlar</a></li>
+            <li><a href="{% url 'contact' %}">Habarlaşmak üçin</a></li>
+            {% endif %}
+            {% if page == 'it_services' %}
+            <li><a href="{% url 'index' %}">Baş sahypa<br></a></li>
+            <li><a href="{% url 'services' %}">Hyzmatlar</a></li>
+            <li><a href="{% url 'it_services' %}" class="active">IT Hyzmatlar</a></li>
+            <li><a href="{% url 'products' %}">Harytlar</a></li>
+            <li><a href="{% url 'contact' %}">Habarlaşmak üçin</a></li>
+            {% endif %}
+            {% if page == 'products' %}
+            <li><a href="{% url 'index' %}">Baş sahypa<br></a></li>
+            <li><a href="{% url 'services' %}">Hyzmatlar</a></li>
+            <li><a href="{% url 'it_services' %}">IT Hyzmatlar</a></li>
+            <li><a href="{% url 'products' %}" class="active">Harytlar</a></li>
+            <li><a href="{% url 'contact' %}">Habarlaşmak üçin</a></li>
+            {% endif %}
+            {% if page == 'contact' %}
+            <li><a href="{% url 'index' %}">Baş sahypa<br></a></li>
+            <li><a href="{% url 'services' %}">Hyzmatlar</a></li>
+            <li><a href="{% url 'it_services' %}">IT Hyzmatlar</a></li>
+            <li><a href="{% url 'products' %}">Harytlar</a></li>
+            <li><a href="{% url 'contact' %}" class="active">Habarlaşmak üçin</a></li>
+            {% endif %}          
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+
+      </div>
 
     </div>
+
   </header>

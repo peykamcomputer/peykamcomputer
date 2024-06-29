@@ -25,7 +25,24 @@
       <div class="container">
 
         <div class="row gy-5">
-
+          <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
+            {% if it_service.image %}
+              <center><img src="{{it_service.image.url}}" width="720px;" class="img-fluid services-img"></center>
+            
+            
+            {% endif %}
+            <h3>{{it_service.title_russian}}</h3>
+            <p>
+              {{it_service.short_description_russian}}
+            </p>
+            <ul>
+              {% for sentence in it_service.full_description_russian|split %}
+                {% if sentence %}
+                  <li><i class="bi bi-check-circle"></i> <span>{{sentence}}</span></li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
 
             <div class="service-box">
@@ -48,25 +65,6 @@
               <p class="d-flex align-items-center mt-1 mb-0"><i class="bi bi-envelope me-2"></i> <a href="mailto:{{email_1}}">{{email_1}}</a></p>
             </div>
 
-          </div>
-
-          <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
-            {% if it_service.image %}
-              <center><img src="{{it_service.image.url}}" width="720px;" class="img-fluid services-img"></center>
-            
-            
-            {% endif %}
-            <h3>{{it_service.title_russian}}</h3>
-            <p>
-              {{it_service.short_description_russian}}
-            </p>
-            <ul>
-              {% for sentence in it_service.full_description_russian|split %}
-                {% if sentence %}
-                  <li><i class="bi bi-check-circle"></i> <span>{{sentence}}</span></li>
-                {% endif %}
-              {% endfor %}
-            </ul>
           </div>
 
         </div>

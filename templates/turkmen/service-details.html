@@ -24,7 +24,24 @@
       <div class="container">
 
         <div class="row gy-5">
-
+          <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
+            {% if service.image %}
+              <center><img src="{{service.image.url}}" width="720px;" class="img-fluid services-img"></center>
+            
+            
+            {% endif %}
+            <h3>{{service.title}}</h3>
+            <p>
+              {{service.short_description}}
+            </p>
+            <ul>
+              {% for sentence in service.full_description|split %}
+                {% if sentence %}
+                  <li><i class="bi bi-check-circle"></i> <span>{{sentence}}</span></li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
 
             <div class="service-box">
@@ -49,24 +66,7 @@
 
           </div>
 
-          <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
-            {% if service.image %}
-              <center><img src="{{service.image.url}}" width="720px;" class="img-fluid services-img"></center>
-            
-            
-            {% endif %}
-            <h3>{{service.title}}</h3>
-            <p>
-              {{service.short_description}}
-            </p>
-            <ul>
-              {% for sentence in service.full_description|split %}
-                {% if sentence %}
-                  <li><i class="bi bi-check-circle"></i> <span>{{sentence}}</span></li>
-                {% endif %}
-              {% endfor %}
-            </ul>
-          </div>
+
 
         </div>
 
