@@ -15,6 +15,42 @@
       <div class="row gy-4">
 
         <div class="col-lg-6">
+          <form action="{% url 'send_email_russian' %}" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+            {% csrf_token %}
+            <div class="row gy-4">
+
+              <div class="col-md-12">
+                <input type="text" name="name" class="form-control" placeholder="Ваше имя и фамилия" required="">
+              </div>
+
+              <div class="col-md-6 ">
+                <input type="email" class="form-control" name="email" placeholder="Ваш email" required="">
+              </div>
+              <div class="col-md-6 ">
+                <input type="text" class="form-control" name="number" placeholder="Ваш телефон" required="">
+              </div>
+              <div class="col-md-12">
+                <input type="text" class="form-control" name="subject" placeholder="Ваша проблема" required="">
+              </div>
+
+              <div class="col-md-12">
+                <textarea class="form-control" name="message" rows="6" placeholder="Опишите подробно" required=""></textarea>
+              </div>
+
+              <div class="col-md-12 text-center">
+                {% if messages %}
+                  {% for message in messages %}
+                  <div class="sent-message">{{ message }}!</div>
+                  {% endfor %}
+                {% endif %}
+                
+                <button type="submit">Отправить</button>
+              </div>
+
+            </div>
+          </form>
+        </div><!-- End Contact Form -->
+        <div class="col-lg-6">
 
           <div class="row gy-4">
             <div class="col-md-6">
@@ -55,43 +91,6 @@
           </div>
 
         </div>
-
-        <div class="col-lg-6">
-          <form action="{% url 'send_email_russian' %}" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-            {% csrf_token %}
-            <div class="row gy-4">
-
-              <div class="col-md-12">
-                <input type="text" name="name" class="form-control" placeholder="Ваше имя и фамилия" required="">
-              </div>
-
-              <div class="col-md-6 ">
-                <input type="email" class="form-control" name="email" placeholder="Ваш email" required="">
-              </div>
-              <div class="col-md-6 ">
-                <input type="text" class="form-control" name="number" placeholder="Ваш телефон" required="">
-              </div>
-              <div class="col-md-12">
-                <input type="text" class="form-control" name="subject" placeholder="Ваша проблема" required="">
-              </div>
-
-              <div class="col-md-12">
-                <textarea class="form-control" name="message" rows="6" placeholder="Опишите подробно" required=""></textarea>
-              </div>
-
-              <div class="col-md-12 text-center">
-                {% if messages %}
-                  {% for message in messages %}
-                  <div class="sent-message">{{ message }}!</div>
-                  {% endfor %}
-                {% endif %}
-                
-                <button type="submit">Отправить</button>
-              </div>
-
-            </div>
-          </form>
-        </div><!-- End Contact Form -->
 
       </div>
 
