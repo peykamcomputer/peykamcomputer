@@ -15,6 +15,7 @@ def index(request):
     faqs = FAQ.objects.all()
     hero_section = HeroSection.objects.last()
     sliders = Slider.objects.all()
+    current_url = request.get_full_path()
     
     context = {
         'page': page, 
@@ -24,7 +25,8 @@ def index(request):
         'stats': stats,
         'faqs': faqs,
         'hero_section': hero_section,
-        'sliders': sliders
+        'sliders': sliders,
+        'current_url': current_url
     }
     context['title_name'] = "Peykam | Baş sahypa"
     return render(request, 'turkmen/index.html', context)

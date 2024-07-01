@@ -12,6 +12,9 @@ def context_data(request):
     address_1_russian = Info.objects.last().address_1_russian
     address_2_russian = Info.objects.last().address_2_russian
     work_hours = Info.objects.last().work_hours
+    current_url = request.get_full_path()
+    turkmen_url = current_url.replace('ru', 'tm')
+    russian_url = current_url.replace('tm', 'ru')
     context = {
         'logo_name': logo_name,
         'title_name': title_name,
@@ -24,6 +27,9 @@ def context_data(request):
         'address_2': address_2,
         'address_1_russian': address_1_russian,
         'address_2_russian': address_2_russian,
-        'work_hours': work_hours
+        'work_hours': work_hours,
+        'current_url': current_url,
+        'turkmen_url': turkmen_url,
+        'russian_url': russian_url
     }
     return context

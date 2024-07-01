@@ -89,6 +89,7 @@ class Service(models.Model):
     short_description_russian = models.TextField(blank=True)
     full_description_russian = models.TextField(blank=True)
     image = models.ImageField(upload_to='images', blank=True)
+    image_russian = models.ImageField(upload_to='images', blank=True)
 
     def __str__(self):
         return self.title
