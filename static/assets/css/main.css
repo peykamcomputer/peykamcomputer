@@ -1960,7 +1960,7 @@ section,
   height: 100%;
 }
 
-.contact .php-email-form .error-message {
+.contact .php-email-form .error {
   background: #df1529;
   color: #ffffff;
   text-align: left;
@@ -1969,7 +1969,7 @@ section,
   font-weight: 600;
 }
 
-.contact .php-email-form .sent-message {
+.contact .php-email-form .success {
   color: #ffffff;
   background: #059652;
   text-align: center;

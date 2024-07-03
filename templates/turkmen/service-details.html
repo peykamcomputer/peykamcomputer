@@ -60,8 +60,12 @@
             <div class="help-box d-flex flex-column justify-content-center align-items-center">
               <i class="bi bi-headset help-icon"></i>
               <h4>Ýüz tutmak üçin</h4>
+              {% if service.title|is_translate %}
+              <p class="d-flex align-items-center mt-1 mb-0"><i class="bi bi-envelope me-2"></i> <a href="{% url 'translation_page' %}">Terjime üçin onlaýn sargyt etmek</a></p>
+              {% endif %}
               <p class="d-flex align-items-center mt-2 mb-0"><i class="bi bi-telephone me-2"></i> <span><a href="tel:{{phone_1}}">{{phone_1}}</a></span></p>
               <p class="d-flex align-items-center mt-1 mb-0"><i class="bi bi-envelope me-2"></i> <a href="mailto:{{email_1}}">{{email_1}}</a></p>
+
             </div>
 
           </div>

@@ -15,14 +15,14 @@
       <div class="row gy-4">
 
         <div class="col-lg-6">
-          <form action="{% url 'send_email_russian' %}" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+          <form id="contactForm" action="{% url 'send_email_russian' %}" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200" onsubmit="showLoader()">
             {% csrf_token %}
             <div class="row gy-4">
 
               <div class="col-md-12 text-center">
                 {% if messages %}
                   {% for message in messages %}
-                  <div class="sent-message">{{ message }}!</div>
+                  <div class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</div>
                   {% endfor %}
                 {% endif %}
               </div>
@@ -38,6 +38,8 @@
               <div class="col-md-12">
                 <textarea class="form-control" name="problem" rows="6" placeholder="Опишите вашу проблему" required=""></textarea>
               </div>
+
+              <div id="loading" class="loading">Ваше письмо загружается</div>
 
               <div class="col-md-12 text-center">               
                 <button type="submit">Отправить</button>

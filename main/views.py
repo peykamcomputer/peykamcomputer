@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail, EmailMessage
 from django.conf import settings
 from django.contrib import messages
+
 from .models import Aboutus, Stats, FAQ, HeroSection, Service, Category, Product, Slider, ITservice, FileUploadInstruction
 # Create your views here.
 
@@ -141,10 +142,13 @@ def send_email(request):
         subject = "Peykam Web. Müşderi haty!"
 
         email = EmailMessage(subject, message, settings.EMAIL_HOST_USER, [settings.RECIPIENT_ADDRESS])
-        email.send()
-        
-        messages.success(request, "Siziň e-mail hatyňyz üstünlikli ugradyldy. Biz siziň bilen gysga wagtda habarlaşarys")
-        return redirect("contact")
+        try: 
+            email.send()
+            messages.success(request, "Siziň e-mail hatyňyz üstünlikli ugradyldy. Biz siziň bilen gysga wagtda habarlaşarys.")
+            return redirect("contact")
+        except:
+            messages.error(request, "Ýalňyşlyk! E-mail hatyňyz käbir sebäplere görä ugradylmady.")
+            return redirect("contact")
 
 def translation_page(request):
     page = "translation"
@@ -179,17 +183,19 @@ def send_translation(request):
         subject = "Peykam Web. Onlaýn terjime sargytnama!"
 
         email = EmailMessage(subject, message, settings.EMAIL_HOST_USER, [settings.RECIPIENT_ADDRESS])
-        for file in files:
-            file_name = file.name
-            file_type = file.content_type
-            file_content = file.read()
-            email.attach(file_name, file_content, file_type)
-        email.send()
 
-        messages.success(request, "Siziň resminamalaryňyz üstünlikli ugradyldy. Biz siziň bilen gysga wagtda habarlaşarys")
-        return redirect("translation_page")
-
-
+        try: 
+            for file in files:
+                file_name = file.name
+                file_type = file.content_type
+                file_content = file.read()
+                email.attach(file_name, file_content, file_type)
+            email.send()
+            messages.success(request, "Siziň resminamalaryňyz üstünlikli ugradyldy. Biz siziň bilen gysga wagtda habarlaşarys.")
+            return redirect("translation_page")
+        except:
+            messages.error(request, "Ýalňyşlyk! Resminamalaryňyz käbir sebäplere görä ugradylmady.")
+            return redirect("translation_page")
 
 
 #russian
@@ -323,10 +329,16 @@ def send_email_russian(request):
         Email:\t{}\n
         Проблема:\t{}\n
         '''.format(formdata['name'], formdata['phone_number'], formdata['email'], formdata['problem'])
-        send_mail('Peykam Web. Письмо Клиента!', message, settings.EMAIL_HOST_USER, [settings.RECIPIENT_ADDRESS])
-        
-        messages.success(request, "Ваше письмо было успешно отправлено. Мы свяжемся с вами в скором времени")
-        return redirect("contact_russian")
+        subject = 'Peykam Web. Письмо Клиента!'
+
+        email = EmailMessage(subject, message, settings.EMAIL_HOST_USER, [settings.RECIPIENT_ADDRESS])
+        try: 
+            email.send()
+            messages.success(request, "Ваше письмо было успешно отправлено. Мы свяжемся с вами в скором времени.")
+            return redirect("contact_russian")
+        except:
+            messages.error(request, "Ошибка! Ваше письмо не было отправлено по какой-то причине.")
+            return redirect("contact_russian")
 
 
 
@@ -363,12 +375,17 @@ def send_translation_russian(request):
         subject = "Peykam Web. Заявка на онлайн перевод!"
 
         email = EmailMessage(subject, message, settings.EMAIL_HOST_USER, [settings.RECIPIENT_ADDRESS])
-        for file in files:
-            file_name = file.name
-            file_type = file.content_type
-            file_content = file.read()
-            email.attach(file_name, file_content, file_type)
-        email.send()
+        
+        try: 
+            for file in files:
+                file_name = file.name
+                file_type = file.content_type
+                file_content = file.read()
+                email.attach(file_name, file_content, file_type)
+            email.send()
+            messages.success(request, "Ваше данные были успешно отправлены. Мы свяжемся с вами в скором времени.")
+            return redirect("translation_page_russian")
+        except:
+            messages.error(request, "Ошибка! Ваши документы по каким-то причинам не были отправлены.")
+            return redirect("translation_page_russian")
 
-        messages.success(request, "Ваше данные были успешно отправлены. Мы свяжемся с вами в скором времени")
-        return redirect("translation_page_russian")
