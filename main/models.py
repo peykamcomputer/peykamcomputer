@@ -67,8 +67,10 @@ class FAQ(models.Model):
 class HeroSection(models.Model):
     title = models.CharField(max_length = 500, blank=True)
     description = models.TextField(blank=True)
+    components = models.TextField(blank=True)
     title_russian = models.CharField(max_length = 500, blank=True)
     description_russian = models.TextField(blank=True)
+    components_russian = models.TextField(blank=True)
     image = models.ImageField(upload_to='images', blank=True)
 
     def __str__(self):
@@ -134,3 +136,17 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class FileUploadInstruction(models.Model):
+    title = models.CharField(max_length = 250, blank=True)
+    description = models.TextField(blank=True)
+    title_russian = models.CharField(max_length = 250, blank=True)
+    description_russian = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "File Upload Instruction"
+        verbose_name_plural = "File Upload Instructions"

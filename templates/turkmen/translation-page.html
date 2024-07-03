@@ -7,15 +7,14 @@
   <br><br><br><br><br><br>
     <!-- Section Title -->
     <div class="container section-title" data-aos="fade-up">
-      <h2>Biziň bilen habarlaşmak üçin</h2>
+      <h2>Resminamalaryňyzy terjime etdirmek üçin onlaýn sargyt etmek</h2>
     </div><!-- End Section Title -->
 
     <div class="container" data-aos="fade-up" data-aos-delay="100">
 
       <div class="row gy-4">
-
         <div class="col-lg-6">
-          <form action="{% url 'send_email' %}" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200" enctype="multipart/form-data">
+          <form action="{% url 'send_translation' %}" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="row gy-4">
               <div class="col-md-12 text-center">
@@ -28,6 +27,7 @@
               <div class="col-md-12">
                 <input type="text" name="name" class="form-control" placeholder="Adyňyz we familiýaňyz" required="">
               </div>
+
               <div class="col-md-6 ">
                 <input type="email" class="form-control" name="email" placeholder="Email salgyňyz" required="">
               </div>
@@ -37,6 +37,9 @@
               <div class="col-md-12">
                 <textarea class="form-control" name="problem" rows="6" placeholder="Meseläňiz" required=""></textarea>
               </div>
+              <div class="col-md-12">
+                <input type="file" class="form-control" name="file" placeholder="Faýly ýükläň"  required="" multiple>
+              </div>
               <div class="col-md-12 text-center">               
                 <button type="submit">Ugrat</button>
               </div>
@@ -44,46 +47,22 @@
             </div>
           </form>
         </div><!-- End Contact Form -->
+
         <div class="col-lg-6">
-
           <div class="row gy-4">
-            <div class="col-md-6">
+            <div class="col-md-12">
               <div class="info-item" data-aos="fade" data-aos-delay="200">
-                <i class="bi bi-geo-alt"></i>
-                <h3>Biziň salgymyz</h3>
-                <p>{{address_1}}</p>
+                <i class="bi bi-exclamation-triangle-fill"></i>
+                <h3>Üns beriň!</h3>
+                {% for instruction in upload_instructions %}
+                <p>{{instruction.title}}</p>
+                <ul>
+                  <li><p>{{instruction.description}}</p></li>
+                </ul>
+                {% endfor %}
               </div>
             </div><!-- End Info Item -->
-
-            <div class="col-md-6">
-              <div class="info-item" data-aos="fade" data-aos-delay="300">
-                <i class="bi bi-telephone"></i>
-                <h3>Telefon belgimiz</h3>
-                <p>{{phone_1}}</p>
-                <p>{{phone_2}}</p>
-              </div>
-            </div><!-- End Info Item -->
-
-            <div class="col-md-6">
-              <div class="info-item" data-aos="fade" data-aos-delay="400">
-                <i class="bi bi-envelope"></i>
-                <h3>E-mail salgymyz</h3>
-                <p>{{email_1}}</p>
-                <p>{{email_2}}</p>
-              </div>
-            </div><!-- End Info Item -->
-
-            <div class="col-md-6">
-              <div class="info-item" data-aos="fade" data-aos-delay="500">
-                <i class="bi bi-clock"></i>
-                <h3>Iş wagty</h3>
-                <p>Hepdäniň ähli günleri</p>
-                <p>{{work_hours}}</p>
-              </div>
-            </div><!-- End Info Item -->
-
           </div>
-
         </div>
 
 

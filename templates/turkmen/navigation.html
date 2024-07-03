@@ -34,6 +34,7 @@
             <li><a href="{% url 'services' %}">Hyzmatlar</a></li>
             <li><a href="{% url 'it_services' %}">IT Hyzmatlar</a></li>
             <li><a href="{% url 'products' %}">Harytlar</a></li>
+            <li><a href="{% url 'translation_page' %}">Onlaýn terjime</a></li>
             <li><a href="{% url 'contact' %}">Habarlaşmak üçin</a></li>            
             {% endif %}
             {% if page == 'services' %}
@@ -41,6 +42,7 @@
             <li><a href="{% url 'services' %}" class="active">Hyzmatlar</a></li>
             <li><a href="{% url 'it_services' %}">IT Hyzmatlar</a></li>
             <li><a href="{% url 'products' %}">Harytlar</a></li>
+            <li><a href="{% url 'translation_page' %}">Onlaýn terjime</a></li>
             <li><a href="{% url 'contact' %}">Habarlaşmak üçin</a></li>
             {% endif %}
             {% if page == 'it_services' %}
@@ -48,6 +50,7 @@
             <li><a href="{% url 'services' %}">Hyzmatlar</a></li>
             <li><a href="{% url 'it_services' %}" class="active">IT Hyzmatlar</a></li>
             <li><a href="{% url 'products' %}">Harytlar</a></li>
+            <li><a href="{% url 'translation_page' %}">Onlaýn terjime</a></li>
             <li><a href="{% url 'contact' %}">Habarlaşmak üçin</a></li>
             {% endif %}
             {% if page == 'products' %}
@@ -55,6 +58,15 @@
             <li><a href="{% url 'services' %}">Hyzmatlar</a></li>
             <li><a href="{% url 'it_services' %}">IT Hyzmatlar</a></li>
             <li><a href="{% url 'products' %}" class="active">Harytlar</a></li>
+            <li><a href="{% url 'translation_page' %}">Onlaýn terjime</a></li>
+            <li><a href="{% url 'contact' %}">Habarlaşmak üçin</a></li>
+            {% endif %}
+            {% if page == 'translation' %}
+            <li><a href="{% url 'index' %}">Baş sahypa<br></a></li>
+            <li><a href="{% url 'services' %}">Hyzmatlar</a></li>
+            <li><a href="{% url 'it_services' %}">IT Hyzmatlar</a></li>
+            <li><a href="{% url 'products' %}">Harytlar</a></li>
+            <li><a href="{% url 'translation_page' %}" class="active">Onlaýn terjime</a></li>
             <li><a href="{% url 'contact' %}">Habarlaşmak üçin</a></li>
             {% endif %}
             {% if page == 'contact' %}
@@ -62,6 +74,7 @@
             <li><a href="{% url 'services' %}">Hyzmatlar</a></li>
             <li><a href="{% url 'it_services' %}">IT Hyzmatlar</a></li>
             <li><a href="{% url 'products' %}">Harytlar</a></li>
+            <li><a href="{% url 'translation_page' %}">Onlaýn terjime</a></li>
             <li><a href="{% url 'contact' %}" class="active">Habarlaşmak üçin</a></li>
             {% endif %}          
           </ul>

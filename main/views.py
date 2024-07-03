@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
 from django.conf import settings
 from django.contrib import messages
-from .models import Aboutus, Stats, FAQ, HeroSection, Service, Category, Product, Slider, ITservice
+from .models import Aboutus, Stats, FAQ, HeroSection, Service, Category, Product, Slider, ITservice, FileUploadInstruction
 # Create your views here.
 
 #turkmen
@@ -129,21 +129,67 @@ def send_email(request):
         name = request.POST.get('name')
         phone_number = request.POST.get('number')
         email = request.POST.get('email')
-        subject = request.POST.get('subject')
-        message = request.POST.get('message')
+        problem = request.POST.get('problem')
 
-        formdata = {'name': name, 'phone_number': phone_number, 'email': email, 'subject': subject, 'message': message}
+        formdata = {'name': name, 'phone_number': phone_number, 'email': email, 'problem': problem}
         message = '''
         Ady we familiýasy:\t{}\n
         Telefon belgisi:\t{}\n
         Email salgysy:\t{}\n
         Meselesi:\t{}\n
-        Doly açyklamasy:\t{}\n
-        '''.format(formdata['name'], formdata['phone_number'], formdata['email'], formdata['subject'], formdata['message'])
-        send_mail('Peykam Web. Müşderi haty!', message, settings.EMAIL_HOST_USER, [settings.RECIPIENT_ADDRESS])
+        '''.format(formdata['name'], formdata['phone_number'], formdata['email'], formdata['problem'])
+        subject = "Peykam Web. Müşderi haty!"
+
+        email = EmailMessage(subject, message, settings.EMAIL_HOST_USER, [settings.RECIPIENT_ADDRESS])
+        email.send()
         
         messages.success(request, "Siziň e-mail hatyňyz üstünlikli ugradyldy. Biz siziň bilen gysga wagtda habarlaşarys")
         return redirect("contact")
+
+def translation_page(request):
+    page = "translation"
+    language = "turkmen"
+    upload_instructions = FileUploadInstruction.objects.all()
+    context = {
+        'page': page,
+        'language': language,
+        'upload_instructions': upload_instructions
+    }
+    context['title_name'] = "Peykam | Onlaýn terjime"
+    return render(request, 'turkmen/translation-page.html', context)
+
+
+
+def send_translation(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        phone_number = request.POST.get('number')
+        email = request.POST.get('email')
+        problem = request.POST.get('problem')
+        files = request.FILES.getlist('file')
+
+        formdata = {'name': name, 'phone_number': phone_number, 'email': email, 'problem': problem}
+        message = '''
+        Ady we familiýasy:\t{}\n
+        Telefon belgisi:\t{}\n
+        Email salgysy:\t{}\n
+        Meselesi:\t{}\n
+        Müşderiniň resminamalarynyň faýllary:\n
+        '''.format(formdata['name'], formdata['phone_number'], formdata['email'], formdata['problem'])
+        subject = "Peykam Web. Onlaýn terjime sargytnama!"
+
+        email = EmailMessage(subject, message, settings.EMAIL_HOST_USER, [settings.RECIPIENT_ADDRESS])
+        for file in files:
+            file_name = file.name
+            file_type = file.content_type
+            file_content = file.read()
+            email.attach(file_name, file_content, file_type)
+        email.send()
+
+        messages.success(request, "Siziň resminamalaryňyz üstünlikli ugradyldy. Biz siziň bilen gysga wagtda habarlaşarys")
+        return redirect("translation_page")
+
+
 
 
 #russian
@@ -268,17 +314,15 @@ def send_email_russian(request):
         name = request.POST.get('name')
         phone_number = request.POST.get('number')
         email = request.POST.get('email')
-        subject = request.POST.get('subject')
-        message = request.POST.get('message')
+        problem = request.POST.get('problem')
 
-        formdata = {'name': name, 'phone_number': phone_number, 'email': email, 'subject': subject, 'message': message}
+        formdata = {'name': name, 'phone_number': phone_number, 'email': email, 'problem': problem}
         message = '''
         Имя и фамилия:\t{}\n
         Номер телефона:\t{}\n
         Email:\t{}\n
         Проблема:\t{}\n
-        Описание:\t{}\n
-        '''.format(formdata['name'], formdata['phone_number'], formdata['email'], formdata['subject'], formdata['message'])
+        '''.format(formdata['name'], formdata['phone_number'], formdata['email'], formdata['problem'])
         send_mail('Peykam Web. Письмо Клиента!', message, settings.EMAIL_HOST_USER, [settings.RECIPIENT_ADDRESS])
         
         messages.success(request, "Ваше письмо было успешно отправлено. Мы свяжемся с вами в скором времени")
@@ -286,4 +330,45 @@ def send_email_russian(request):
 
 
 
+def translation_page_russian(request):
+    page = "translation"
+    language = "russian"
+    upload_instructions = FileUploadInstruction.objects.all()
+    context = {
+        'page': page,
+        'language': language,
+        'upload_instructions': upload_instructions
+    }
+    context['title_name'] = "Peykam | Онлайн перевод"
+    return render(request, 'russian/translation-page.html', context)
 
+
+
+def send_translation_russian(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        phone_number = request.POST.get('number')
+        email = request.POST.get('email')
+        problem = request.POST.get('problem')
+        files = request.FILES.getlist('file')
+
+        formdata = {'name': name, 'phone_number': phone_number, 'email': email, 'problem': problem}
+        message = '''
+        Имя и фамилия:\t{}\n
+        Номер телефона:\t{}\n
+        Email:\t{}\n
+        Проблема:\t{}\n
+        Файлы документа клиента:\n
+        '''.format(formdata['name'], formdata['phone_number'], formdata['email'], formdata['problem'])
+        subject = "Peykam Web. Заявка на онлайн перевод!"
+
+        email = EmailMessage(subject, message, settings.EMAIL_HOST_USER, [settings.RECIPIENT_ADDRESS])
+        for file in files:
+            file_name = file.name
+            file_type = file.content_type
+            file_content = file.read()
+            email.attach(file_name, file_content, file_type)
+        email.send()
+
+        messages.success(request, "Ваше данные были успешно отправлены. Мы свяжемся с вами в скором времени")
+        return redirect("translation_page_russian")

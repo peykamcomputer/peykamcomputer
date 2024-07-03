@@ -31,6 +31,7 @@
             <li><a href="{% url 'services_russian' %}">Услуги</a></li>
             <li><a href="{% url 'it_services_russian' %}">IT Услуги</a></li>
             <li><a href="{% url 'products_russian' %}">Товары</a></li>
+            <li><a href="{% url 'translation_page_russian' %}">Онлайн перевод</a></li>
             <li><a href="{% url 'contact_russian' %}">Обратная связь</a></li>
             {% endif %}
             {% if page == 'services' %}
@@ -38,6 +39,7 @@
             <li><a href="{% url 'services_russian' %}" class="active">Услуги</a></li>
             <li><a href="{% url 'it_services_russian' %}">IT Услуги</a></li>
             <li><a href="{% url 'products_russian' %}">Товары</a></li>
+            <li><a href="{% url 'translation_page_russian' %}">Онлайн перевод</a></li>
             <li><a href="{% url 'contact_russian' %}">Обратная связь</a></li>
             {% endif %}
             {% if page == 'it_services' %}
@@ -45,6 +47,7 @@
             <li><a href="{% url 'services_russian' %}">Услуги</a></li>
             <li><a href="{% url 'it_services_russian' %}" class="active">IT Услуги</a></li>
             <li><a href="{% url 'products_russian' %}">Товары</a></li>
+            <li><a href="{% url 'translation_page_russian' %}">Онлайн перевод</a></li>
             <li><a href="{% url 'contact_russian' %}">Обратная связь</a></li>
             {% endif %}
             {% if page == 'products' %}
@@ -52,6 +55,15 @@
             <li><a href="{% url 'services_russian' %}">Услуги</a></li>
             <li><a href="{% url 'it_services_russian' %}">IT Услуги</a></li>
             <li><a href="{% url 'products_russian' %}" class="active">Товары</a></li>
+            <li><a href="{% url 'translation_page_russian' %}">Онлайн перевод</a></li>
+            <li><a href="{% url 'contact_russian' %}">Обратная связь</a></li>
+            {% endif %}
+            {% if page == 'translation' %}
+            <li><a href="{% url 'index_russian' %}">Главная страница<br></a></li>
+            <li><a href="{% url 'services_russian' %}">Услуги</a></li>
+            <li><a href="{% url 'it_services_russian' %}">IT Услуги</a></li>
+            <li><a href="{% url 'products_russian' %}">Товары</a></li>
+            <li><a href="{% url 'translation_page_russian' %}" class="active">Онлайн перевод</a></li>
             <li><a href="{% url 'contact_russian' %}">Обратная связь</a></li>
             {% endif %}
             {% if page == 'contact' %}
@@ -59,6 +71,7 @@
             <li><a href="{% url 'services_russian' %}">Услуги</a></li>
             <li><a href="{% url 'it_services_russian' %}">IT Услуги</a></li>
             <li><a href="{% url 'products_russian' %}">Товары</a></li>
+            <li><a href="{% url 'translation_page_russian' %}">Онлайн перевод</a></li>
             <li><a href="{% url 'contact_russian' %}" class="active">Обратная связь</a></li>
             {% endif %}
           </ul>

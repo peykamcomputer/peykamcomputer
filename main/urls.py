@@ -17,6 +17,8 @@ urlpatterns = [
     path('tm/product/<pk>', views.product, name="product"),
     path('tm/contact/', views.contact, name="contact"),
     path('tm/contact/send_email/', views.send_email, name="send_email"),
+    path('tm/translation_page/', views.translation_page, name="translation_page"),
+    path('tm/translation_page/send_translation', views.send_translation, name="send_translation"),
     
 
     #russiann
@@ -29,5 +31,7 @@ urlpatterns = [
     path('ru/product/<pk>', views.product_russian, name="product_russian"),
     path('ru/contact/', views.contact_russian, name="contact_russian"),
     path('ru/contact/send_email/', views.send_email_russian, name="send_email_russian"),
+    path('ru/translation_page/', views.translation_page_russian, name="translation_page_russian"),
+    path('ru/translation_page/send_translation', views.send_translation_russian, name="send_translation_russian"),
 
 ]

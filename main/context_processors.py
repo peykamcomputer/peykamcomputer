@@ -13,8 +13,13 @@ def context_data(request):
     address_2_russian = Info.objects.last().address_2_russian
     work_hours = Info.objects.last().work_hours
     current_url = request.get_full_path()
-    turkmen_url = current_url.replace('ru', 'tm')
-    russian_url = current_url.replace('tm', 'ru')
+    if current_url == "/":
+        turkmen_url = "/tm"
+        russian_url = "/ru"
+    else:
+        turkmen_url = current_url.replace('ru', 'tm')
+        russian_url = current_url.replace('tm', 'ru')
+
     context = {
         'logo_name': logo_name,
         'title_name': title_name,
