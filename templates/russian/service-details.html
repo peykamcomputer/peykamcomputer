@@ -60,7 +60,7 @@
             <div class="help-box d-flex flex-column justify-content-center align-items-center">
               <i class="bi bi-headset help-icon"></i>
               <h4>Обратная связь</h4>
-              {% if service.title|is_translate %}
+              {% if service.icon == "translate" %}
               <p class="d-flex align-items-center mt-1 mb-0"><i class="bi bi-translate me-2"></i> <a href="{% url 'translation_page_russian' %}">Отправить онлайн заявку</a></p>
               {% endif %}
               <p class="d-flex align-items-center mt-2 mb-0"><i class="bi bi-telephone me-2"></i> <span><a href="tel:{{phone_1}}">{{phone_1}}</a></span></p>

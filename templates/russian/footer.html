@@ -23,6 +23,7 @@
             <li><i class="bi bi-chevron-right"></i> <a href="{% url 'services_russian' %}">Услуги</a></li>
             <li><i class="bi bi-chevron-right"></i> <a href="{% url 'it_services_russian' %}">IT Услуги</a></li>
             <li><i class="bi bi-chevron-right"></i> <a href="{% url 'products_russian' %}">Товары</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="{% url 'view_cart_russian' %}">Корзина ({{cart_items_length}})</a></li>
 
           </ul>
         </div>
@@ -39,9 +40,9 @@
           <h4>Следите за нами</h4>
           <p>Следите за нами в соц.сетях и знакомтесь ежедневными новостями</p>
           <div class="social-links d-flex">
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-telegram"></i></a>
-            <a href=""><i class="bi bi-tiktok"></i></a>
+            <a href="https://www.instagram.com/{{instagram_link}}"><i class="bi bi-instagram"></i></a>
+            <a href="https://telegram.org/"><i class="bi bi-telegram"></i></a>
+            <a href="https://www.tiktok.com/"><i class="bi bi-tiktok"></i></a>
           </div>
         </div>
 

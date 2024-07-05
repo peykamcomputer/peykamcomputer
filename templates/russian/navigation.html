@@ -58,6 +58,14 @@
             <li><a href="{% url 'translation_page_russian' %}">Онлайн перевод</a></li>
             <li><a href="{% url 'contact_russian' %}">Обратная связь</a></li>
             {% endif %}
+            {% if page == 'category products' %}
+            <li><a href="{% url 'index_russian' %}">Главная страница<br></a></li>
+            <li><a href="{% url 'services_russian' %}">Услуги</a></li>
+            <li><a href="{% url 'it_services_russian' %}">IT Услуги</a></li>
+            <li><a href="{% url 'products_russian' %}" class="active">Товары</a></li>
+            <li><a href="{% url 'translation_page_russian' %}">Онлайн перевод</a></li>
+            <li><a href="{% url 'contact_russian' %}">Обратная связь</a></li>
+            {% endif %}
             {% if page == 'translation' %}
             <li><a href="{% url 'index_russian' %}">Главная страница<br></a></li>
             <li><a href="{% url 'services_russian' %}">Услуги</a></li>
@@ -73,6 +81,19 @@
             <li><a href="{% url 'products_russian' %}">Товары</a></li>
             <li><a href="{% url 'translation_page_russian' %}">Онлайн перевод</a></li>
             <li><a href="{% url 'contact_russian' %}" class="active">Обратная связь</a></li>
+            {% endif %}
+            {% if page == 'cart' %}
+            <li><a href="{% url 'index_russian' %}">Главная страница<br></a></li>
+            <li><a href="{% url 'services_russian' %}">Услуги</a></li>
+            <li><a href="{% url 'it_services_russian' %}">IT Услуги</a></li>
+            <li><a href="{% url 'products_russian' %}">Товары</a></li>
+            <li><a href="{% url 'translation_page_russian' %}">Онлайн перевод</a></li>
+            <li><a href="{% url 'contact_russian' %}">Обратная связь</a></li>
+            {% endif %}
+            {% if cart_items_length == 0 %}
+              <li><a href="{% url 'view_cart_russian' %}"><i class="bi bi-cart4" style="font-size: 20px;"></i></a></li>
+            {% else %}
+              <li><a href="{% url 'view_cart_russian' %}">({{cart_items_length}})<i class="bi bi-cart4" style="font-size: 20px;"></i></a></li>
             {% endif %}
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

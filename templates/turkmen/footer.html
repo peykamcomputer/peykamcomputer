@@ -5,7 +5,7 @@
     <div class="container footer-top">
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
-          <a href="{% static 'index.html' %}" class="d-flex align-items-center">
+          <a href="{% url 'index' %}" class="d-flex align-items-center">
             <span class="sitename">{{logo_name}}</span>
           </a>
           <div class="footer-contact pt-3">
@@ -23,6 +23,7 @@
             <li><i class="bi bi-chevron-right"></i> <a href="{% url 'services' %}">Hyzmatlar</a></li>
             <li><i class="bi bi-chevron-right"></i> <a href="{% url 'it_services' %}">IT Hyzmatlar</a></li>
             <li><i class="bi bi-chevron-right"></i> <a href="{% url 'products' %}">Harytlar</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="{% url 'view_cart_russian' %}">Sebet ({{cart_items_length}})</a></li>
 
           </ul>
         </div>
@@ -39,9 +40,9 @@
           <h4>Bizi yzarlaň</h4>
           <p>Sosial torlarynda biziň gündelik täzeliklerimiz bilen tanyş boluň</p>
           <div class="social-links d-flex">
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-telegram"></i></a>
-            <a href=""><i class="bi bi-tiktok"></i></a>
+            <a href="https://www.instagram.com/{{instagram_link}}"><i class="bi bi-instagram"></i></a>
+            <a href="https://telegram.org/"><i class="bi bi-telegram"></i></a>
+            <a href="https://www.tiktok.com/"><i class="bi bi-tiktok"></i></a>
           </div>
         </div>
 

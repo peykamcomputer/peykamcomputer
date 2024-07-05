@@ -1,0 +1,76 @@
+{% extends 'russian/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Contact Section -->
+<section id="contact" class="contact section">
+  <br><br><br><br><br><br>
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+      <h2>Заказать товары в корзине онлайн</h2>
+    </div><!-- End Section Title -->
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+      <div class="row gy-4">
+        <div class="col-lg-6">
+          <form action="{% url 'send_order_russian' %}" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200" enctype="multipart/form-data" onsubmit="showLoader()">
+            {% csrf_token %}
+            <div class="row gy-4">
+              <div class="col-md-12 text-center">
+                {% if messages %}
+                  {% for message in messages %}
+                  <div class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</div>
+                  {% endfor %}
+                {% endif %}
+              </div>
+              <div class="col-md-12">
+                <input type="text" name="name" class="form-control" placeholder="Ваше имя и фамилия" required="">
+              </div>
+              <div class="col-md-12 ">
+                <input type="text" class="form-control" name="address" placeholder="Ваш адрес" required="">
+              </div>
+              <div class="col-md-12 ">
+                <input type="email" class="form-control" name="email" placeholder="Ваш email" required="">
+              </div>
+              <div class="col-md-12 ">
+                <input type="text" class="form-control" name="number" placeholder="Ваш телефон" required="">
+              </div>
+
+              <div id="loading" class="loading">Ваше данные загружаются</div>
+
+              <div class="col-md-12 text-center">               
+                <button type="submit">Заказать</button>
+              </div>
+
+            </div>
+          </form>
+        </div><!-- End Contact Form -->
+
+        <div class="col-lg-6">
+          <div class="row gy-4">
+            <div class="col-md-12">
+              <div class="info-item" data-aos="fade" data-aos-delay="200">
+                <i class="bi bi-cart-check"></i>
+                <h3>Товары в корзине</h3>
+                {% for item in cart_items %}
+                <p>Общая стоимость - {{total_price}} TMT</p>
+                <ul>
+                  <li><p>{{item.product.name}} - {{item.quantity}} шт.</p></li>
+                </ul>
+                {% empty %}
+                <p>Нет товаров</p>
+                {% endfor %}
+              </div>
+            </div><!-- End Info Item -->
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section><!-- /Contact Section -->
+
+  {% endblock %}
