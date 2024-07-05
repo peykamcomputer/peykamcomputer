@@ -61,6 +61,7 @@ class FAQ(models.Model):
         return self.question
 
     class Meta:
+        ordering = ('-id',)
         verbose_name = "FAQ"
         verbose_name_plural = "FAQ"
 
@@ -145,7 +146,7 @@ class CartItem(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
  
     def __str__(self):
-        return f'{self.quantity} x {self.product.name}'
+        return f'{self.quantity}x {self.product.name}'
 
 class OrderProduct(models.Model):
     name = models.CharField(max_length = 250, blank=True)
