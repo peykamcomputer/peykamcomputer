@@ -146,6 +146,7 @@ def view_cart(request):
         'cart_items': cart_items, 
         'total_price': total_price
     }
+    context['title_name'] = f"Peykam | Harytlar | Sebet"
     return render(request, 'turkmen/cart.html', context)
  
 def add_to_cart(request, product_id):
@@ -191,6 +192,7 @@ def order_products(request):
         'cart_items': cart_items,
         'total_price': total_price
     }
+    context['title_name'] = f"Peykam | Harytlar | Sargamak"
     return render(request, 'turkmen/order-page.html', context)
 
 def send_order(request):
@@ -460,6 +462,7 @@ def view_cart_russian(request):
         'cart_items': cart_items, 
         'total_price': total_price
     }
+    context['title_name'] = f"Peykam | Товары | Корзина"
     return render(request, 'russian/cart.html', context)
  
 def add_to_cart_russian(request, product_id):
@@ -505,6 +508,7 @@ def order_products_russian(request):
         'cart_items': cart_items,
         'total_price': total_price
     }
+    context['title_name'] = f"Peykam | Товары | Заказать"
     return render(request, 'russian/order-page.html', context)
 
 def send_order_russian(request):
