@@ -205,7 +205,10 @@ def send_order(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         phone_number = request.POST.get('number')
-        email = request.POST.get('email')
+        try:
+            email = request.POST.get('email')
+        except:
+            email = ""
         address = request.POST.get('address')
 
         order_object = OrderProduct.objects.create(name=name, address=address, email=email, phone=phone_number, products=ordered_products, total_price=total_price)
@@ -299,7 +302,7 @@ def send_translation(request):
         Ady we familiýasy:\t{}\n
         Telefon belgisi:\t{}\n
         Email salgysy:\t{}\n
-        Meselesi:\t{}\n
+        Terjime etmeli dili:\t{}\n
         Müşderiniň resminamalarynyň faýllary:\n
         '''.format(formdata['name'], formdata['phone_number'], formdata['email'], formdata['problem'])
         subject = "Peykam Web. Onlaýn terjime sargytnama!"
@@ -521,7 +524,10 @@ def send_order_russian(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         phone_number = request.POST.get('number')
-        email = request.POST.get('email')
+        try:
+            email = request.POST.get('email')
+        except:
+            email = ""
         address = request.POST.get('address')
 
         order_object = OrderProduct.objects.create(name=name, address=address, email=email, phone=phone_number, products=ordered_products, total_price=total_price)
@@ -615,7 +621,7 @@ def send_translation_russian(request):
         Имя и фамилия:\t{}\n
         Номер телефона:\t{}\n
         Email:\t{}\n
-        Проблема:\t{}\n
+        Язык перевода:\t{}\n
         Файлы документа клиента:\n
         '''.format(formdata['name'], formdata['phone_number'], formdata['email'], formdata['problem'])
         subject = "Peykam Web. Заявка на онлайн перевод!"

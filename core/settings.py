@@ -143,7 +143,7 @@ TIME_ZONE = 'Asia/Ashkhabad'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [STATIC_DIR,]

@@ -2343,6 +2343,43 @@ section,
   background: var(--accent-color);
   color: var(--contrast-color);
 }
+/* Service List - Mobile */
+@media (max-width: 1199px) {
+  .service-details .service-list a {
+    display: none;
+    padding: 10px 20px;
+    font-family: var(--nav-font);
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--nav-dropdown-color);
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .service-details .service-list .mobile-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 17px;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: var(--nav-dropdown-background-color);
+    color: var(--nav-color);
+    
+  }
+
+  .service-details .service-list .dropdown-active {
+    display: block;
+    background-color: rgba(33, 37, 41, 0.03);
+  }
+}
+
+/* Service List - Desktop */
+@media (min-width: 1200px) {
+  .service-details .service-list a {
+    display: block;
+  }
+}
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
