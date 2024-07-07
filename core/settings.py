@@ -35,12 +35,16 @@ DEBUG = True
 #DEBUG = False
 
 ALLOWED_HOSTS = [
-    'http://peykamcomputer.pythonanywhere.com', 
+    'http://peykamcomputer.pythonanywhere.com',
     'https://peykamcomputer.pythonanywhere.com',
     'http://www.peykamcomputer.pythonanywhere.com',
     'https://www.peykamcomputer.pythonanywhere.com',
     'www.peykamcomputer.pythonanywhere.com',
-    'peykamcomputer.pythonanywhere.com', 
+    'peykamcomputer.pythonanywhere.com',
+    'www.peykam.me',
+    'peykam.me',
+    'https://www.peykam.me',
+    'https://peykam.me',
     '127.0.0.1'
 ]
 
@@ -96,7 +100,7 @@ TEMPLATES = [
             'builtins': [
                 'main.templatetags.custom_filters',
             ],
-            
+
         },
     },
 ]
@@ -184,3 +188,8 @@ MESSAGE_TAGS = {
     message_constants.WARNING: 'warning',
     message_constants.ERROR: 'error',
 }
+
+
+#SECURE_SSL_REDIRECT = True
+#SESSION_COOKIE_SECURE = True
+#CSRF_COOKIE_SECURE = True
