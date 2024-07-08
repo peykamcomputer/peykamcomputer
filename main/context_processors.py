@@ -25,7 +25,12 @@ def context_data(request):
         turkmen_url = current_url.replace('ru', 'tm')
         russian_url = current_url.replace('tm', 'ru')
         
-    cart_items_length = CartItem.objects.count()
+    if not request.session.session_key:
+        request.session.create()
+    session_key = request.session.session_key
+    
+    cart_items = CartItem.objects.filter(session_key=session_key)
+    cart_items_length = len(cart_items)
     context = {
         'logo_name': logo_name,
         'title_name': title_name,
