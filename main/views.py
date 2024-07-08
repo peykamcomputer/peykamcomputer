@@ -138,7 +138,13 @@ def product(request, pk):
 def view_cart(request):
     page = "cart"
     language = "turkmen"
-    cart_items = CartItem.objects.all()
+
+    if not request.session.session_key:
+        request.session.create()
+    session_key = request.session.session_key
+    
+    cart_items = CartItem.objects.filter(session_key=session_key)
+
     total_price = sum(item.product.price * item.quantity for item in cart_items)
     context = {
         'page': page,
@@ -151,7 +157,11 @@ def view_cart(request):
  
 def add_to_cart(request, product_id):
     product = Product.objects.get(id=product_id)
-    cart_item, created = CartItem.objects.get_or_create(product=product)
+    if not request.session.session_key:
+        request.session.create()
+    session_key = request.session.session_key
+
+    cart_item, created = CartItem.objects.get_or_create(product=product, session_key=session_key)
     cart_item.quantity += 1
     cart_item.save()
     return redirect('products')
@@ -184,7 +194,12 @@ def remove_from_cart(request, item_id):
 def order_products(request):
     page = "cart"
     language = "turkmen"
-    cart_items = CartItem.objects.all()
+    
+    if not request.session.session_key:
+        request.session.create()
+    session_key = request.session.session_key
+    
+    cart_items = CartItem.objects.filter(session_key=session_key)
     total_price = sum(item.product.price * item.quantity for item in cart_items)
     context = {
         'page': page,
@@ -196,7 +211,13 @@ def order_products(request):
     return render(request, 'turkmen/order-page.html', context)
 
 def send_order(request):
-    cart_items = CartItem.objects.all()
+    session_key = request.session.session_key
+    if not session_key:
+        request.session.create()
+        session_key = request.session.session_key
+    
+    cart_items = CartItem.objects.filter(session_key=session_key)
+    
     total_price = sum(item.product.price * item.quantity for item in cart_items)
     ordered_products = ""
     for item in list(cart_items):
@@ -253,7 +274,10 @@ def send_email(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         phone_number = request.POST.get('number')
-        email = request.POST.get('email')
+        try:
+            email = request.POST.get('email')
+        except:
+            email = ""
         problem = request.POST.get('problem')
 
         formdata = {'name': name, 'phone_number': phone_number, 'email': email, 'problem': problem}
@@ -293,7 +317,10 @@ def send_translation(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         phone_number = request.POST.get('number')
-        email = request.POST.get('email')
+        try:
+            email = request.POST.get('email')
+        except:
+            email = ""
         problem = request.POST.get('problem')
         files = request.FILES.getlist('file')
 
@@ -457,7 +484,11 @@ def product_russian(request, pk):
 def view_cart_russian(request):
     page = "cart"
     language = "russian"
-    cart_items = CartItem.objects.all()
+    if not request.session.session_key:
+        request.session.create()
+    session_key = request.session.session_key
+    
+    cart_items = CartItem.objects.filter(session_key=session_key)
     total_price = sum(item.product.price * item.quantity for item in cart_items)
     context = {
         'page': page,
@@ -470,7 +501,10 @@ def view_cart_russian(request):
  
 def add_to_cart_russian(request, product_id):
     product = Product.objects.get(id=product_id)
-    cart_item, created = CartItem.objects.get_or_create(product=product)
+    if not request.session.session_key:
+        request.session.create()
+    session_key = request.session.session_key
+    cart_item, created = CartItem.objects.get_or_create(product=product, session_key)
     cart_item.quantity += 1
     cart_item.save()
     return redirect('products_russian')
@@ -503,7 +537,11 @@ def remove_from_cart_russian(request, item_id):
 def order_products_russian(request):
     page = "cart"
     language = "russian"
-    cart_items = CartItem.objects.all()
+    if not request.session.session_key:
+        request.session.create()
+    session_key = request.session.session_key
+    
+    cart_items = CartItem.objects.filter(session_key=session_key)
     total_price = sum(item.product.price * item.quantity for item in cart_items)
     context = {
         'page': page,
@@ -515,7 +553,11 @@ def order_products_russian(request):
     return render(request, 'russian/order-page.html', context)
 
 def send_order_russian(request):
-    cart_items = CartItem.objects.all()
+    if not request.session.session_key:
+        request.session.create()
+    session_key = request.session.session_key
+    
+    cart_items = CartItem.objects.filter(session_key=session_key)
     total_price = sum(item.product.price * item.quantity for item in cart_items)
     ordered_products = ""
     for item in list(cart_items):
@@ -571,7 +613,10 @@ def send_email_russian(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         phone_number = request.POST.get('number')
-        email = request.POST.get('email')
+        try:
+            email = request.POST.get('email')
+        except:
+            email = ""
         problem = request.POST.get('problem')
 
         formdata = {'name': name, 'phone_number': phone_number, 'email': email, 'problem': problem}
@@ -612,7 +657,10 @@ def send_translation_russian(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         phone_number = request.POST.get('number')
-        email = request.POST.get('email')
+        try:
+            email = request.POST.get('email')
+        except:
+            email = ""
         problem = request.POST.get('problem')
         files = request.FILES.getlist('file')
 

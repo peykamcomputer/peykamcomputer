@@ -144,9 +144,14 @@ class CartItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=0)
     date_added = models.DateTimeField(auto_now_add=True)
- 
+    session_key = models.CharField(max_length=100, blank=True)
+    
+    class Meta:
+        unique_together = ('product', 'session_key')
+    
     def __str__(self):
         return f'{self.quantity}x {self.product.name}'
+
 
 class OrderProduct(models.Model):
     name = models.CharField(max_length = 250, blank=True)
