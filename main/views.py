@@ -504,7 +504,7 @@ def add_to_cart_russian(request, product_id):
     if not request.session.session_key:
         request.session.create()
     session_key = request.session.session_key
-    cart_item, created = CartItem.objects.get_or_create(product=product, session_key)
+    cart_item, created = CartItem.objects.get_or_create(product=product, session_key=session_key)
     cart_item.quantity += 1
     cart_item.save()
     return redirect('products_russian')
