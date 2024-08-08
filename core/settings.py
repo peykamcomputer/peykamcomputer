@@ -35,17 +35,9 @@ DEBUG = True
 #DEBUG = False
 
 ALLOWED_HOSTS = [
-    'http://peykamcomputer.pythonanywhere.com',
-    'https://peykamcomputer.pythonanywhere.com',
-    'http://www.peykamcomputer.pythonanywhere.com',
-    'https://www.peykamcomputer.pythonanywhere.com',
-    'www.peykamcomputer.pythonanywhere.com',
-    'peykamcomputer.pythonanywhere.com',
-    'www.peykam.me',
-    'peykam.me',
-    'https://www.peykam.me',
-    'https://peykam.me',
-    '127.0.0.1'
+    '216.250.13.175',
+    'peykam.com.tm',
+    'www.peykam.com.tm',
 ]
 
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
