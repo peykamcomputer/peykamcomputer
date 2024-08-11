@@ -35,7 +35,8 @@ DEBUG = True
 #DEBUG = False
 
 ALLOWED_HOSTS = [
-    '216.250.13.175',
+    '216.250.13.109',
+    '127.0.0.1',
     'peykam.com.tm',
     'www.peykam.com.tm',
 ]
@@ -143,7 +144,7 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [STATIC_DIR,]
-#STATIC_ROOT = '/home/peykamcomputer/peykamcomputer/static'
+#STATIC_ROOT = '/home/ubuntu/peykamcomputer/static'
 
 #media
 MEDIA_ROOT = MEDIA_DIR
