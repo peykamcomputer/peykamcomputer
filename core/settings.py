@@ -31,8 +31,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-2m)pcaq*t(0vqv7@&s50@9e_a)*0e00dj3808)$w3%w@73!tq#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-#DEBUG = False
+#DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '216.250.13.109',
@@ -143,8 +143,8 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [STATIC_DIR,]
-#STATIC_ROOT = '/home/ubuntu/peykamcomputer/static'
+#STATICFILES_DIRS = [STATIC_DIR,]
+STATIC_ROOT = '/home/ubuntu/peykamcomputer/static'
 
 #media
 MEDIA_ROOT = MEDIA_DIR
