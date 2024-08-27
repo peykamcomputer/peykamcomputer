@@ -1,120 +1,124 @@
-  {% extends 'russian/base.html' %}
-  {% load static %}
-  {% block content %}
-   
-      <!-- Page Title -->
-      <div class="page-title">
-        <div class="heading">
-        </div>
-        <nav class="breadcrumbs">
-          <div class="container">
-            <ol>
-              <li><a href="{% url 'index_russian' %}">Главная страница</a></li>
-              <li class="current">Товары</li>
-              {% if product_category %}
-              <li class="current">{{product_category.name_russian}}</li>
-              {% else %}
-              <li class="current">Все</li>
-              {% endif %}
-            </ol>
-          </div>
-        </nav>
-      </div><!-- End Page Title -->
-  
-      <!-- Service Details Section -->
-      <section id="service-details" class="service-details section">
-  
+{% extends 'russian/base.html' %}
+{% load static %}
+{% block content %}
+ 
+    <!-- Page Title -->
+    <div class="page-title">
+      <div class="heading">
+      </div>
+      <nav class="breadcrumbs">
         <div class="container">
-  
-          <div class="row gy-5">
-            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-  
-              <div class="service-box">
-                <h4>В корзине - {{cart_items_length}} товаров</h4>
-                <div class="services-list">
-                  <a href="{% url 'view_cart_russian' %}"><i class="bi bi-cart3"></i><span>Открыть корзину</span></a> 
-                </div>
-                <br>
-                
-                <div class="services-list">
-                  <div class="service-list">
-                    <div class="mobile-toggle"><h4>Категории <i class="bi bi-chevron-right"></i></h4> </div>
-                    {% if page == 'products' %}
-                    <a href="{% url 'products_russian' %}" class="active"><i class="bi bi-bag"></i><span>Все</span></a> 
-                    {% for category in categories %}
-                    <a href="{% url 'category_products_russian' category.id %}"><i class="bi bi-bag"></i><span>{{category.name_russian}}</span></a> 
-                    {% endfor %}
-                  {% endif %}
-                  {% if page == 'category products' %}
-                    <a href="{% url 'products_russian' %}"><i class="bi bi-bag"></i><span>Все</span></a>
-                    {% for category in categories %}
-                      {% if product_category.id == category.id %}
-                      <a href="{% url 'category_products_russian' category.id %}" class="active"><i class="bi bi-bag"></i><span>{{category.name_russian}}</span></a>
-                      {% else %}
-                      <a href="{% url 'category_products_russian' category.id %}"><i class="bi bi-bag"></i><span>{{category.name_russian}}</span></a>
-                      {% endif %}
-                    {% endfor %}
-                  {% endif %}
-                  </div>
+          <ol>
+            <li><a href="{% url 'index_russian' %}">Главная страница</a></li>
+            <li class="current">Товары</li>
+            {% if product_category %}
+            <li class="current">{{product_category.name_russian}}</li>
+            {% else %}
+            <li class="current">Все</li>
+            {% endif %}
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Page Title -->
 
+    <!-- Service Details Section -->
+    <section id="service-details" class="service-details section">
+
+      <div class="container">
+
+        <div class="row gy-5">
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="service-box">
+              <h4>В корзине - {{cart_items_length}} товаров</h4>
+              <div class="services-list">
+                <a href="{% url 'view_cart_russian' %}"><i class="bi bi-cart3"></i><span>Открыть корзину</span></a> 
+              </div>
+              <br>
+              
+              <div class="services-list">
+                <div class="service-list">
+                  <div class="mobile-toggle"><h4>Категории <i class="bi bi-chevron-right"></i></h4> </div>
+                  {% if page == 'products' %}
+                  <a href="{% url 'products_russian' %}" class="active"><i class="bi bi-bag"></i><span>Все</span></a> 
+                  {% for category in categories %}
+                  <a href="{% url 'category_products_russian' category.id %}"><i class="bi bi-bag"></i><span>{{category.name_russian}}</span></a> 
+                  {% endfor %}
+                {% endif %}
+                {% if page == 'category products' %}
+                  <a href="{% url 'products_russian' %}"><i class="bi bi-bag"></i><span>Все</span></a>
+                  {% for category in categories %}
+                    {% if product_category.id == category.id %}
+                    <a href="{% url 'category_products_russian' category.id %}" class="active"><i class="bi bi-bag"></i><span>{{category.name_russian}}</span></a>
+                    {% else %}
+                    <a href="{% url 'category_products_russian' category.id %}"><i class="bi bi-bag"></i><span>{{category.name_russian}}</span></a>
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
                 </div>
-                <script>
-                  // Add this JavaScript to your script file or inside a <script> tag
-                    document.addEventListener('DOMContentLoaded', function () {
-                      const toggleButton = document.querySelector('.service-list .mobile-toggle');
-                      const serviceLinks = document.querySelectorAll('.service-list a');
-  
-                      toggleButton.addEventListener('click', function () {
-                        serviceLinks.forEach(link => {
-                          link.classList.toggle('dropdown-active');
-                        });
+
+              </div>
+              <script>
+                // Add this JavaScript to your script file or inside a <script> tag
+                  document.addEventListener('DOMContentLoaded', function () {
+                    const toggleButton = document.querySelector('.service-list .mobile-toggle');
+                    const serviceLinks = document.querySelectorAll('.service-list a');
+
+                    toggleButton.addEventListener('click', function () {
+                      serviceLinks.forEach(link => {
+                        link.classList.toggle('dropdown-active');
                       });
                     });
-                </script>
-              </div><!-- End Services List -->
-  
-            </div>
-            <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
-              <div class="container">
-          
-                <div class="row gy-5">
-                  {% for product in products %}
-                  <div class="col-xl-4 col-md-6">
-                    <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="100">
-        
-                      <div class="post-img position-relative overflow-hidden">
-                        <img src="{{product.image.url}}" class="img-fluid" alt="">
-                        <span class="post-date">{{product.price}} TMT</span>
-                      </div>
-        
-                      <div class="post-content d-flex flex-column">
-                        <h3 class="post-title"><a href="{% url 'product_russian' product.id %}">{{product.name_russian}}</a></h3>
-                        <div class="meta d-flex align-items-center">
-  
-                        </div>
-                        <a href="{% url 'add_to_cart_russian' product.id %}" class="btn btn-card"><i class="bi bi-cart-plus"></i> <span>В корзину</span></a>
-                      </div>
-        
-                    </div>
-                  </div><!-- End post item -->
-                  {% empty %}
-                  <div class="service-box">
-                    <h4>В данной категории товаров нет.</h3>
-                  </div>
-                  
-                  {% endfor %}
-        
-                </div>
-        
-              </div>
-              
-            </div>
-  
+                  });
+              </script>
+            </div><!-- End Services List -->
+
           </div>
-  
+          <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
+            <div class="container">
+        
+              <div class="row gy-5">
+                {% for product in products %}
+                <div class="col-xl-4 col-md-6">
+                  <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="100">
+      
+                    <div class="post-img position-relative overflow-hidden">
+                      <img src="{{product.image.url}}" class="img-fluid" alt="">
+                      <span class="post-date">{{product.price}} TMT</span>
+                    </div>
+      
+                    <div class="post-content d-flex flex-column">
+                      {% if product.is_in_stock %}
+                      <h6 class="post-title" style="color: rgb(7, 85, 7);"><i class="bi bi-check2-circle"></i> Есть в наличии</h6>
+                      {% else %}
+                      <h6 class="post-title" style="color: red;"><i class="bi bi-x-circle"></i> Нет в наличии</h6>
+                      {% endif %}
+                      <h3 class="post-title"><a href="{% url 'product_russian' product.id %}">{{product.name_russian}}</a></h3>
+                      <div class="meta d-flex align-items-center">
+
+                      </div>
+                      <a href="{% url 'add_to_cart_russian' product.id %}" class="btn btn-card"><i class="bi bi-cart-plus"></i> <span>В корзину</span></a>
+                    </div>
+      
+                  </div>
+                </div><!-- End post item -->
+                {% empty %}
+                <div class="service-box">
+                  <h4>В данной категории товаров нет.</h3>
+                </div>
+                
+                {% endfor %}
+      
+              </div>
+      
+            </div>
+            
+          </div>
+
         </div>
-  
-      </section><!-- /Service Details Section -->
-    {% endblock %}
-  
-  
+
+      </div>
+
+    </section><!-- /Service Details Section -->
+  {% endblock %}
+

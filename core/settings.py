@@ -57,7 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'sslserver',
+    #'sslserver',
     'main',
     'django_cleanup.apps.CleanupConfig'
 ]
@@ -183,9 +183,9 @@ MESSAGE_TAGS = {
 }
 
 
-#SECURE_SSL_REDIRECT = True
-#SESSION_COOKIE_SECURE = True
-#CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Use database-backed sessions
 SESSION_COOKIE_AGE = 1209600  # Two weeks (in seconds)

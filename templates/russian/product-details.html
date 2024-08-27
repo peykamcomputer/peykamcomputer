@@ -58,6 +58,11 @@
           <div class="col-lg-4">
             <div class="portfolio-info" data-aos="fade-up" data-aos-delay="200">
               <h3>Информация о продукте</h3>
+              {% if product.is_in_stock %}
+              <h6 class="post-title" style="color: rgb(7, 85, 7);"><i class="bi bi-check2-circle"></i> Есть в наличии</h6>
+              {% else %}
+              <h6 class="post-title" style="color: red;"><i class="bi bi-x-circle"></i> Нет в наличии</h6>
+              {% endif %}
               <ul>
                 <li><strong>Категория</strong>: {{product.category.name_russian}}</li>
                 <li><strong>Название продукта</strong>: {{product.name_russian}}</li>

@@ -135,6 +135,11 @@ class Product(models.Model):
     description_russian = models.TextField(blank=True)
     price = models.FloatField(null=True, blank=True, default=None)
     image = models.ImageField(upload_to='images', blank=True)
+    stock_quantity = models.PositiveIntegerField(default=0)
+
+    @property
+    def is_in_stock(self):
+        return self.stock_quantity > 0
 
     def __str__(self):
         return self.name

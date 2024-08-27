@@ -89,6 +89,11 @@
                     </div>
       
                     <div class="post-content d-flex flex-column">
+                      {% if product.is_in_stock %}
+                      <h6 class="post-title" style="color: rgb(7, 85, 7);"><i class="bi bi-check2-circle"></i> Elimizde bar</h6>
+                      {% else %}
+                      <h6 class="post-title" style="color: red;"><i class="bi bi-x-circle"></i> Elimizde ýok</h6>
+                      {% endif %}
                       <h3 class="post-title"><a href="{% url 'product' product.id %}">{{product.name}}</a></h3>
                       <div class="meta d-flex align-items-center">
 
